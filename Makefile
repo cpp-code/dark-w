@@ -1,7 +1,12 @@
-all: regular-expression
+all: re vargs
 
-regular-expression: regular-expression.cc
-	g++ -o $@ $^ -Wall -Werror
+CFLAG = -Wall -Werror
+
+re: regular-expression.cc
+	g++ -o $@ $^ $(CFLAG)
+
+vargs: variable-arguments.cc
+	gcc -o $@ $^ $(CFLAG)
 
 check:
 	@echo
@@ -10,4 +15,4 @@ distcheck:
 	@echo
 
 clean:
-	@rm -vf regular-expression
+	@rm -vf re vargs
