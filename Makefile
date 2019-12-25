@@ -1,11 +1,14 @@
-all: re vargs
+all: re vargs date-time
 
 CFLAG = -Wall -Werror
 
 re: regular-expression.cc
 	g++ -o $@ $^ $(CFLAG)
 
-vargs: variable-arguments.cc
+vargs: variable-arguments.c
+	gcc -o $@ $^ $(CFLAG)
+
+date-time: date-and-time.c
 	gcc -o $@ $^ $(CFLAG)
 
 check:
@@ -15,4 +18,4 @@ distcheck:
 	@echo
 
 clean:
-	@rm -vf re vargs
+	@rm -vf re vargs date-time
